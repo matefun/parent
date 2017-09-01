@@ -11,16 +11,7 @@
 		<name>Matefun</name>
 		<url></url>
 	</organization>
-	<repositories>
-    <repository>
-        <id>parent-mvn-repo</id>
-        <url>https://raw.github.com/grusso1981@gmail.com/parent/mvn-repo/</url>
-        <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-        </snapshots>
-    </repository>
-</repositories>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -174,48 +165,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.1</version>
-				<configuration>
-					<altDeploymentRepository>
-						internal.repo::default::file://${project.build.directory}/mvn-repo
-					</altDeploymentRepository>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<version>0.11</version>
-				<configuration>
-					<message>Maven artifacts for ${project.version}</message>
-					<noJekyll>true</noJekyll>
-					<outputDirectory>${project.build.directory}/mvn-repo
-					</outputDirectory>
-					<branch>refs/heads/mvn-repo</branch>
-					<includes>
-						<include>**/*</include>
-					</includes>
-					<repositoryName>parent</repositoryName>
-					<repositoryOwner>grusso1981@gmail.com</repositoryOwner>
-					<server>github</server>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>deploy</phase>
-					</execution>
-				</executions>
-				<dependencies>
-                        <dependency>
-                            <groupId>org.eclipse.mylyn.github</groupId>
-                            <artifactId>org.eclipse.egit.github.core</artifactId>
-                            <version>2.1.5</version>
-                        </dependency>
-                    </dependencies>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
